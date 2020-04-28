@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+import javax.swing.*;
+
 import static java.lang.System.out;
 
 /**
@@ -29,7 +31,7 @@ public class Artifact {
         this.century = century;
     }
 
-    public void printC(Artifact name){
+    public static void printC(Artifact name){
         System.out.print(name.id +" ");
         if(name.cellar != null) {
             System.out.print(name.cellar + " ");
@@ -43,6 +45,6 @@ public class Artifact {
         Artifact number_one = new Artifact(212121);
         Artifact number_two = new Artifact(212122,"Ацтеки");
         Artifact number_three = new Artifact(212123,"КУкухи",21);
-        number_three.printC(number_one);
+        printC(number_three);
     }
 }
