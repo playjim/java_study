@@ -15,9 +15,6 @@ public class myFamily {
                 public String toString(){
                         return relationship+","+name+","+age;
                 }
-                public boolean equals(Human human) {
-                        return this.name ==  human.name;
-                }
         }
         public static void main(String[] args) {
                 ArrayList<Human> member = new ArrayList<Human>();
@@ -33,17 +30,16 @@ public class myFamily {
                         command = sc.nextLine();
                         if(command.equals("q"))
                                 break;
-                        switch(command)
-                        {
+                        switch(command) {
                                 case "1":
                                         System.out.print("1.Процесс добавление нового объекта в список: \nВведите родство > ");
                                         String relationship = sc.nextLine();
                                         System.out.print("Введите имя > ");
                                         String name = sc.nextLine();
                                         System.out.print("Введите возраст > ");
-                                        String age =sc.nextLine();
+                                        String age = sc.nextLine();
                                         int ages = Integer.parseInt(age);
-                                        member.add(new Human(relationship,name,ages));
+                                        member.add(new Human(relationship, name, ages));
                                         break;
                                 case "2":
                                         System.out.println("2.Удаление объекта из списка. \nДля удаления объекта введите его характеристики:");
@@ -52,17 +48,17 @@ public class myFamily {
                                         System.out.print("Введите имя > ");
                                         name = sc.nextLine();
                                         System.out.print("Введите возраст > ");
-                                        age =sc.nextLine();
+                                        age = sc.nextLine();
                                         ages = Integer.parseInt(age);
-                                        for(int i=0;i<member.size();i++){
-                                                if(member.get(i).name.equals(name) && member.get(i).relationship.equals(relationship) && member.get(i).age == ages){
+                                        for (int i = 0; i < member.size(); i++) {
+                                                if (member.get(i).name.equals(name) && member.get(i).relationship.equals(relationship) && member.get(i).age == ages) {
                                                         member.remove(i);
                                                 }
                                         }
                                         break;
                                 case "3":
                                         System.out.println("3.Вывод списка:");
-                                        for(int i=0;i<member.size();i++){
+                                        for (int i = 0; i < member.size(); i++) {
                                                 System.out.println(member.get(i));
                                         }
                                         break;
@@ -70,9 +66,9 @@ public class myFamily {
                                         help();
                                 default:
                                         System.out.println("неверная команда");
-                        }// tnd of switch(command)
-                }// tnd ofwhile(true)
-        }// end of main()
+                        }
+                }
+        }
         static void help()
         {
                 System.out.println("q - Завершение программы");
