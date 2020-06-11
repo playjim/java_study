@@ -16,15 +16,15 @@ public class borisov_lab2 {
             switch(command)
             {
                 case "1":
-                    System.out.println("Выполнение команды 1");
+                    System.out.print("Выполнение команды 1\n");
                     enter();
                     break;
                 case "2":
-                    System.out.println("Выполнение команды 2\n Нахождение прозведения минимального и максимального элемента массива");
+                    System.out.print("Выполнение команды 2\nНахождение прозведения минимального и максимального элемента массива = ");
                     System.out.println(multiplication(array));
                     break;
                 case "3":
-                    System.out.println("Выполнение команды 3\n Нахождение частного максимального и минимального элемента массива");
+                    System.out.print("Выполнение команды 3\nНахождение частного максимального и минимального элемента массива = ");
                     System.out.println(division(array));
                     break;
                 case "help":
