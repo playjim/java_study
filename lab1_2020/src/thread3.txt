@@ -1,0 +1,78 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package thread3;
+
+/**
+ *
+ * @author User
+ */
+class MyUtil{
+    int cnt;
+    MyUtil(int cnt){
+        this.cnt = cnt;
+    }
+    void proc(){        
+        for(long i = 0; i < cnt; i++)
+        {
+            double q = 3.14 * 2.78;
+        }    
+    }
+}
+class MyRun implements Runnable{
+    MyUtil mU = new MyUtil(99999999);    
+    Thread thrd;
+    MyRun(String name){
+        thrd = new Thread(this, name);
+        thrd.start();
+    }
+    public void run()
+    {
+        String name;
+        System.out.println("Запуск потока " + thrd.getName());
+        for(int i = 0; i < 10; i++)
+        {
+            mU.proc();
+            name = thrd.getName();
+            switch(name)
+            {
+                case "Child1":
+                    System.out.print("________");                    
+                    break;
+                case "Child2":
+                    System.out.print("______________________________");                    
+                    break;
+                case "Child3":
+                    System.out.print("____________________________________________________");                    
+                    break;
+            }
+            System.out.println("Поток " + thrd.getName() + " счетчик " + i);
+            
+        }
+        System.out.println("Завершение потока " + thrd.getName());
+
+    }
+}
+public class Thread3 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        System.out.println("Запуск основного потока");
+        MyUtil mU = new MyUtil(22222222);
+        
+        MyRun mR1 = new MyRun("Child1");
+        MyRun mR2 = new MyRun("Child2");
+        MyRun mR3 = new MyRun("Child3");
+        for(int i = 0; i < 50; i++)
+        {
+            mU.proc();
+            System.out.println("main" + i);            
+        }
+        System.out.println("Завершение основного потока");    
+    }    
+}

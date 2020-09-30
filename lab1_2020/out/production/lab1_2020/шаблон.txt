@@ -1,0 +1,61 @@
+/*
+
+ */
+
+package thread;
+
+class MyRun1 implements Runnable{ 
+    Thread thrd;
+    MyRun1(String name){
+        thrd = new Thread(this, name);
+        thrd.start();
+    }
+    public void run()
+    {
+        System.out.println("Запуск потока " + thrd.getName());
+/*
+В этом месте следует реализовать циклический вычислительный процесс необходимой длительности.
+Процесс должен выводить информацию в консоль. Длительность процесса и периодичность вывода информации
+подбирается опытным путем так чтобы в консоли было видно переключение процессора с одного потока на другой.
+При этом интенсивность вывода должна быть умеренной.
+*/
+        System.out.println("Завершение потока " + thrd.getName());
+    }
+}
+
+class MyRun2 implements Runnable{ 
+    Thread thrd;
+    MyRun2(String name){
+        thrd = new Thread(this, name);
+        thrd.start();
+    }
+    public void run()
+    {
+        System.out.println("Запуск потока " + thrd.getName());
+/*
+В этом месте следует реализовать циклический вычислительный процесс необходимой длительности.
+Процесс должен выводить информацию в консоль. Длительность процесса и периодичность вывода информации
+подбирается опытным путем так чтобы в консоли было видно переключение процессора с одного потока на другой.
+При этом интенсивность вывода должна быть умеренной.
+*/
+        System.out.println("Завершение потока " + thrd.getName());
+    }
+}
+
+public class Thread {
+
+    public static void main(String[] args) {
+        
+        MyRun1 mR1 = new MyRun1("Child1");
+        MyRun2 mR2 = new MyRun2("Child2");
+        try{
+            mR1.thrd.join();
+            mR2.thrd.join();
+        }
+        catch(InterruptedException exc)
+        {
+            System.out.println("прерывание основногот потока");
+        }
+
+    }    
+}

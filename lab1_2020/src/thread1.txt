@@ -1,0 +1,76 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package thread1;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author User
+ */
+class MyUtil{
+    int cnt;
+    MyUtil(int cnt){
+        this.cnt = cnt;
+    }
+    void proc(){        
+        for(long i = 0; i < cnt; i++)
+        {
+            double q = 3.14 * 2.78;
+        }    
+    }
+}
+class MyRun implements Runnable{
+    String thrdName;
+    MyUtil mU = new MyUtil(99999999);
+    MyRun(String name){
+        thrdName = name;
+    }
+    public void run()
+    {
+        System.out.println("Запуск потока " + thrdName);
+        for(int i = 0; i < 10; i++)
+        {
+            //try {
+            //    Thread.sleep(400);
+            //} catch (InterruptedException ex) {
+            //    Logger.getLogger(MyRun.class.getName()).log(Level.SEVERE, null, ex);
+            //}
+            mU.proc();
+            System.out.println("_____________________________Поток " + thrdName + " счетчик " + i);
+            
+        }
+        System.out.println("Завершение потока " + thrdName);
+
+    }
+}
+public class Thread1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        System.out.println("Запуск основного потока");
+        MyUtil mU = new MyUtil(44444444);
+        
+        MyRun mR = new MyRun("Child1");
+        Thread newThread = new Thread(mR);
+        newThread.start();
+        for(int i = 0; i < 50; i++)
+        {
+            //try {
+            //    Thread.sleep(100);
+            //} catch (InterruptedException ex) {
+            //    Logger.getLogger(MyRun.class.getName()).log(Level.SEVERE, null, ex);
+            //}
+            mU.proc();
+            System.out.println("Основной поток счетчик" + i);            
+        }
+        System.out.println("Завершение основного потока");    
+    }    
+}

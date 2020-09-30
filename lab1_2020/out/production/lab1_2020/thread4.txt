@@ -1,0 +1,64 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package thread4;
+
+/**
+ *
+ * @author User
+ */
+class PriorityDemo implements Runnable{
+    int count;
+    Thread thrd;
+    static boolean stop = false;
+    static String currentName;
+    PriorityDemo(String name){
+        thrd = new Thread(this, name);
+        count = 0;
+        currentName = name;
+    }
+    public void run()
+    {
+        System.out.println(thrd.getName() + " - запуск");
+        do{
+            count++;
+            if(currentName.compareTo(thrd.getName())!= 0 ){
+                currentName = thrd.getName();
+                System.out.println("переключение на " + currentName);
+                
+            }
+        }while(stop == false && count < 10000000);
+        stop = true;
+        System.out.println(thrd.getName() + " - завершение");
+    }
+}
+public class Thread4 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        PriorityDemo pD1 = new PriorityDemo("tr1");
+        PriorityDemo pD2 = new PriorityDemo("tr2");
+        pD1.thrd.setPriority(Thread.NORM_PRIORITY-1);
+        pD2.thrd.setPriority(Thread.NORM_PRIORITY+1);
+        pD1.thrd.start();
+        pD2.thrd.start();
+        try{
+            pD1.thrd.join();
+            pD2.thrd.join();
+        }
+        catch(InterruptedException exc)
+        {
+            System.out.println("прерывание основногот потока");
+        }
+        System.out.println("счетчик потока tr1 " + pD1.count);
+        System.out.println("счетчик потока tr2 " + pD2.count);
+        
+        
+    }
+    
+}
