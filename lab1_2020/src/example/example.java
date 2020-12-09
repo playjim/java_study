@@ -19,7 +19,7 @@ class MyRun1 implements Runnable{
             Thread.sleep(0);
             for(int i=0;i < 32;i++){
                 System.out.println("Работа потока "+thread.getName()+" счет:"+i);
-                System.out.printf("Квадрат числа %d равен %d \n", i, i * i);
+                System.out.printf("Квадрат числа %d равен %d \n\n", i, i * i);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -41,7 +41,7 @@ class MyRun2 implements Runnable{
             Thread.sleep(0);
             for(int i=0;i < 10;i++){
                 System.out.println("Работа потока "+thread.getName()+" счет:"+i);
-                System.out.printf("Квадрат числа %d равен %d \n", i, i * i);
+                System.out.printf("Квадрат числа %d равен %d \n\n", i, i * i);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

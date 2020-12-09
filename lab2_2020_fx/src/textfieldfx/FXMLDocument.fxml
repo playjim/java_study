@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="textfieldfx.FXMLDocumentController">
+   <children>
+      <TextField fx:id="tfName" layoutX="23.0" layoutY="40.0" onAction="#handleTFnameAction" />
+      <TextField id="tfAge" fx:id="tfAge" layoutX="23.0" layoutY="75.0" onAction="#handleTFageAction" />
+      <Button fx:id="getNameButton" layoutX="191.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleGetNameButtonAction" text="Get name" />
+      <Label id="lbName" fx:id="lbName" layoutX="23.0" layoutY="128.0" prefHeight="17.0" prefWidth="95.0" />
+      <Button fx:id="getAgeButton" layoutX="191.0" layoutY="75.0" mnemonicParsing="false" onAction="#handleGetAgeButtonAction" prefHeight="25.0" prefWidth="68.0" text="Get age" />
+      <Label id="lbAge" fx:id="lbAge" layoutX="23.0" layoutY="153.0" prefHeight="17.0" prefWidth="128.0" />
+   </children>
+</AnchorPane>

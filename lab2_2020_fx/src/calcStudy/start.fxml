@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane fx:id="ap" prefHeight="400.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calcStudy.Controller">
+   <children>
+      <Button fx:id="buttonStudy" layoutX="60.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleButtonStudy" prefHeight="126.0" prefWidth="172.0" text="Обучение" />
+      <Button fx:id="buttonExam" layoutX="415.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleButtonExam" prefHeight="126.0" prefWidth="172.0" text="Экзамен" />
+      <Text layoutX="60.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Выбери режим обучение или экзамен:" wrappingWidth="498.13000106811523" />
+      <Text layoutX="60.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Обучение - выберите количество примеров и решайте их! " wrappingWidth="483.13000106811523" />
+      <Text layoutX="60.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Экзамен - вам предстоит решить 10 примеров, от количества верных ответов зависит твоя оценка! " wrappingWidth="483.13000106811523" />
+      <Button fx:id="buttonGetName" layoutX="60.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleGetNameButtonAction" text="Имя" />
+      <Label fx:id="labelName" layoutX="156.0" layoutY="45.0" prefHeight="19.0" prefWidth="113.0" />
+      <Button fx:id="buttonGetLastName" layoutX="60.0" layoutY="83.0" mnemonicParsing="false" onAction="#handleGetLastNameButtonAction" text="Фамилия" />
+      <Label fx:id="labelLastName" layoutX="156.0" layoutY="88.0" prefHeight="19.0" prefWidth="113.0" />
+   </children>
+</AnchorPane>

@@ -2,42 +2,39 @@
 import java.io.*;
 
 public class lab_1 {
+    //создание объектов классов Student, Study, Exam
     public static Student student = new Student();// объект студент
     public static Study study = new Study();
     public static Exam exam = new Exam();
     public static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); // считывание с клавиатуры
-    public static String s;
 
     public static void main(String[] args) throws Exception {
-        init();
+        init(); // инициализация
         if (student.mode == 1) {
             study();
         } else exam_enter();
     }
 
-    public static void init() throws Exception {
-        PrintText("Пожалуйста представься");
+    public static void init() throws Exception { //метод - инициализация. Спрашиваем имя, выбираем режим 1 или 2.
+        System.out.print("Пожалуйста представься: ");
         student.name = reader.readLine();
         PrintText("Привет, " + student.name);
         PrintText("Это программа поможет выучить тебе таблицу умножения, а также пройти экзамен.");
         PrintText(student.name + " ,выбери режим: \n1) Обучение  \n2) Экзамен");
-        s = reader.readLine();
-        student.mode = Integer.parseInt(s);
+        student.mode = Integer.parseInt(reader.readLine());
     } // инициализация
 
     public static void study() throws Exception {
         PrintText("Круто! Давай учиться!");
-        PrintText("Введите количество примеров для проверки: ");
-        s = reader.readLine();
-        study.level = Integer.parseInt(s);
+        System.out.print("Введите количество примеров для проверки: ");
+        study.level = Integer.parseInt(reader.readLine());
         PrintText("Решите " + study.level + " примеров");
         for (int i = 0; i < study.level; i++) {
             int a = Gen_Random();
             int b = Gen_Random();
             int c = a * b;
-            System.out.println("Сколько будет: " + a + " * " + b + " ?");
-            s = reader.readLine();
-            int sum = Integer.parseInt(s);
+            System.out.print("Сколько будет: " + a + " * " + b + " = ");
+            int sum = Integer.parseInt(reader.readLine());
             if (sum == c) {
                 System.out.println("Верно!");
                 study.right += 1;
@@ -52,16 +49,14 @@ public class lab_1 {
     public static void exam_enter() throws Exception {
         PrintText(student.name + ", добро пожаловать на экзамен. Давай проверим твои знания таблицы умножения.");
         PrintText(" Для начала выбери из списка своего преподователя:\n 1) Петрова Наталия Владимировна\n 2) Степанов Егор Егорьевич\n 3) Борисов Дмитрий Яковлевич");
-        s = reader.readLine();
-        exam.teacher = Integer.parseInt(s);
+        exam.teacher = Integer.parseInt(reader.readLine());
         PrintText("Преступим к экзамену! Решите 10 примеров: ");
         for (int i = 0; i < 10; i++) {
             int a = Gen_Random();
             int b = Gen_Random();
             int c = a * b;
-            System.out.println("Сколько будет: " + a + " * " + b + " ?");
-            s = reader.readLine();
-            int sum = Integer.parseInt(s);
+            System.out.print("Сколько будет: " + a + " * " + b + " = ");
+            int sum = Integer.parseInt(reader.readLine());
             if (sum == c) {
                 exam.right += 1;
             } else {
