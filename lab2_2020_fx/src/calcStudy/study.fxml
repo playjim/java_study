@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calcStudy.Controller">
+<AnchorPane id="AnchorPane" prefHeight="420.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calcStudy.Controller">
    <children>
-      <TextField fx:id="tfName" layoutX="160.0" layoutY="86.0" onAction="#handleTFnameAction" prefHeight="29.0" prefWidth="128.0" />
-      <Button fx:id="buttonEnterStudy" layoutX="199.0" layoutY="127.0" mnemonicParsing="false" onAction="#handleEnterStudyAction" text="Ввод" />
-      <Label fx:id="labelStudy" layoutX="14.0" layoutY="86.0" prefHeight="29.0" prefWidth="128.0" text="test" wrapText="true" />
-      <Label fx:id="labelStudyDiscribe" layoutX="22.0" layoutY="14.0" prefHeight="53.0" prefWidth="275.0" text="test" wrapText="true" />
+      <Button fx:id="buttonEnterStudy" layoutX="59.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleEnterStudyAction" prefHeight="25.0" prefWidth="128.0" text="Кол-во примеров" />
+      <Label fx:id="labelStudy" layoutX="59.0" layoutY="305.0" prefHeight="29.0" prefWidth="128.0" text="Пример" wrapText="true" />
+      <Label fx:id="labelStudyDiscribe" layoutX="225.0" layoutY="42.0" prefHeight="25.0" prefWidth="86.0" wrapText="true" />
+      <Button fx:id="buttonStartStudy" layoutX="59.0" layoutY="84.0" mnemonicParsing="false" onAction="#handleButtonStartStudy" prefHeight="67.0" prefWidth="128.0" text="Начать" />
+      <TextField layoutX="193.0" layoutY="309.0" prefHeight="25.0" prefWidth="94.0" />
+      <Button layoutX="327.0" layoutY="280.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="128.0" text="Ввод" />
+      <Label fx:id="labelStudyStart" layoutX="59.0" layoutY="247.0" prefHeight="17.0" prefWidth="396.0" />
    </children>
 </AnchorPane>

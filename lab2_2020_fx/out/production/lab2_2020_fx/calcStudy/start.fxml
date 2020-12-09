@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 
-<AnchorPane fx:id="ap" prefHeight="400.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calcStudy.Controller">
+<AnchorPane fx:id="ap" prefHeight="420.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calcStudy.Controller">
    <children>
       <Button fx:id="buttonStudy" layoutX="60.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleButtonStudy" prefHeight="126.0" prefWidth="172.0" text="Обучение" />
       <Button fx:id="buttonExam" layoutX="415.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleButtonExam" prefHeight="126.0" prefWidth="172.0" text="Экзамен" />

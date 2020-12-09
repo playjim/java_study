@@ -12,8 +12,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("start.fxml"));
         primaryStage.setTitle("Проверка таблицы умножения");
-        primaryStage.setWidth(720);
-        primaryStage.setHeight(400);
+        primaryStage.setWidth(700);
+        primaryStage.setHeight(420);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
