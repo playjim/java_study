@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="420.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calcStudy.Exam">
+   <children>
+      <Label fx:id="labelStudy" layoutX="59.0" layoutY="164.0" prefHeight="29.0" prefWidth="128.0" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button fx:id="buttonStartStudy" layoutX="59.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleButtonStartStudy" prefHeight="29.0" prefWidth="591.0" text="Начать" />
+      <TextField fx:id="tfEnter" layoutX="178.0" layoutY="166.0" prefHeight="25.0" prefWidth="36.0" />
+      <Button fx:id="buttonEnter" defaultButton="true" disable="true" layoutX="240.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleButtonEnter" prefHeight="29.0" prefWidth="402.0" text="Ввод" />
+      <Label fx:id="labelStudyStart" layoutX="59.0" layoutY="136.0" prefHeight="17.0" prefWidth="396.0">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+   </children>
+</AnchorPane>
