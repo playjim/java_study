@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class myFamily {
@@ -17,14 +16,13 @@ public class myFamily {
                 }
         }
         public static void main(String[] args) {
-                ArrayList<Human> member = new ArrayList<Human>();
+                ArrayList<Human> member = new ArrayList<>();
                 member.add(new Human("mother","Alena",48));
                 member.add(new Human("father","Ivan",49));
                 member.add(new Human("son","Dmitry",23));
                 member.add(new Human("daughter","Nastya",24));
-                Iterator<Human> humanIterator = member.iterator();
                 Scanner sc = new Scanner(System.in);
-                String command = "";
+                String command;
                 while(true){
                         System.out.print(">");
                         command = sc.nextLine();
