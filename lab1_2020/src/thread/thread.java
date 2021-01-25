@@ -1,17 +1,18 @@
 package thread;
 
-class MyRun1 implements Runnable{
+class MyRun1 implements Runnable {
     Thread thread;
-    MyRun1(String name){
+
+    MyRun1(String name) {
         thread = new Thread(this, name);
         thread.start();
     }
-    public void run()
-    {
+
+    public void run() {
         System.out.println("Запуск потока " + thread.getName());
         try {
-            for(int i=0;i < 32;i++){
-                System.out.println("Работа потока "+thread.getName()+" счет:"+i);
+            for (int i = 0; i < 32; i++) {
+                System.out.println("Работа потока " + thread.getName() + " счет:" + i);
                 System.out.printf("Квадрат числа %d равен %d \n\n", i, i * i);
             }
         } catch (Exception e) {
@@ -21,18 +22,19 @@ class MyRun1 implements Runnable{
     }
 }
 
-class MyRun2 implements Runnable{
+class MyRun2 implements Runnable {
     Thread thread;
-    MyRun2(String name){
+
+    MyRun2(String name) {
         thread = new Thread(this, name);
         thread.start();
     }
-    public void run()
-    {
+
+    public void run() {
         System.out.println("Запуск потока " + thread.getName());
         try {
-            for(int i=0;i < 32;i++){
-                System.out.println("Работа потока "+thread.getName()+" счет:"+i);
+            for (int i = 0; i < 32; i++) {
+                System.out.println("Работа потока " + thread.getName() + " счет:" + i);
                 System.out.printf("Квадрат числа %d равен %d \n\n", i, i * i);
             }
         } catch (Exception e) {
@@ -40,19 +42,16 @@ class MyRun2 implements Runnable{
         }
         System.out.println("Завершение потока " + thread.getName());
     }
-
 }
 
 public class thread {
     public static void main(String[] args) {
         MyRun1 mR1 = new MyRun1("Поток1");
         MyRun2 mR2 = new MyRun2("Поток2");
-        try{
+        try {
             mR1.thread.join();
             mR2.thread.join();
-        }
-        catch(InterruptedException exc)
-        {
+        } catch (InterruptedException exc) {
             System.out.println("прерывание основногот потока");
         }
         Thread mainThread = Thread.currentThread();
