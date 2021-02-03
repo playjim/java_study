@@ -10,5 +10,8 @@ summary: 'Get firsthand experience of creating a small inhabited universe and ob
 programming_language: Java
 programming_language_version: 11
 content:
-- Problems
+- Game of Life
+- Problems (1)
+- Problems (2)
+- Problems (3)
 mode: Study
