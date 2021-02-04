@@ -11,5 +11,11 @@ programming_language: Java
 programming_language_version: 11
 content:
 - Game of Life
+<<<<<<< HEAD
 - Problems
+=======
+- Problems (1)
+- Problems (2)
+- Problems (3)
+>>>>>>> 2ca477a7f5617071f1f6e02d5b1436188f5dcc32
 mode: Study

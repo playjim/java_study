@@ -12,6 +12,12 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Game of Life/task" />
+<<<<<<< HEAD
+=======
+            <option value="$PROJECT_DIR$/Problems (1)/Classes for Hospital" />
+            <option value="$PROJECT_DIR$/Problems (2)/String to double conversion" />
+            <option value="$PROJECT_DIR$/Problems (3)/Converting and multiplying" />
+>>>>>>> 2ca477a7f5617071f1f6e02d5b1436188f5dcc32
             <option value="$PROJECT_DIR$/Problems/Army" />
             <option value="$PROJECT_DIR$/Problems/Avoid division by zero" />
             <option value="$PROJECT_DIR$/util" />
