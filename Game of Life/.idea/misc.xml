@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="java version &quot;11.0.10+8&quot;" project-jdk-type="JavaSDK" />
+=======
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="openjdk-15" project-jdk-type="JavaSDK" />
+>>>>>>> 2ca477a7f5617071f1f6e02d5b1436188f5dcc32
 </project>
