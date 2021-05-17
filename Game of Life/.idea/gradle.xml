@@ -5,6 +5,7 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleJvm" value="#JAVA_INTERNAL" />
@@ -15,6 +16,10 @@
             <option value="$PROJECT_DIR$/Problems (1)/Classes for Hospital" />
             <option value="$PROJECT_DIR$/Problems (2)/String to double conversion" />
             <option value="$PROJECT_DIR$/Problems (3)/Converting and multiplying" />
+            <option value="$PROJECT_DIR$/Problems (4)/Employees" />
+            <option value="$PROJECT_DIR$/Problems (5)/Saying animals" />
+            <option value="$PROJECT_DIR$/Problems (6)/Shapes area" />
+            <option value="$PROJECT_DIR$/Problems (7)/Publications" />
             <option value="$PROJECT_DIR$/Problems/Army" />
             <option value="$PROJECT_DIR$/util" />
           </set>

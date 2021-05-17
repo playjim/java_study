@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":Problems__4_-Employees" external.linked.project.path="$MODULE_DIR$/../../../../Problems (4)/Employees" external.root.project.path="$MODULE_DIR$/../../../.." external.system.id="GRADLE" external.system.module.group="Game_of_Life" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../Problems (4)/Employees">
+      <excludeFolder url="file://$MODULE_DIR$/../../../../Problems (4)/Employees/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../Problems (4)/Employees/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../../Problems (4)/Employees/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

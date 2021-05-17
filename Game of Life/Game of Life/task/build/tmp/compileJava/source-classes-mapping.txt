@@ -1,0 +1,6 @@
+life/Main.java
+ life.Main
+life/Condition.java
+ life.Condition
+life/Generation.java
+ life.Generation
