@@ -6,10 +6,17 @@ public class Main {
     public int[] array3;
     public int[] arrayL;
     public static Scanner sc = new Scanner(System.in);
-    public Hashtable<String,Integer> Map1 = new Hashtable<String,Integer>();
-    public Hashtable<String,Integer> Map2 = new Hashtable<String,Integer>();
-    public Hashtable<String,Integer> Map3 = new Hashtable<String,Integer>();
-    public Hashtable<String,Integer> state = new Hashtable<String,Integer>();
+    public Hashtable<String, Double> Map1 = new Hashtable<String, Double>();
+    public Hashtable<String, Double> Map2 = new Hashtable<String, Double>();
+    public Hashtable<String, Double> Map3 = new Hashtable<String, Double>();
+    public Hashtable<String, Double> MapV = new Hashtable<String, Double>();
+    public Hashtable<String, Double> MapVC = new Hashtable<String, Double>();
+    public ArrayList<String> list = new ArrayList<String>();
+    String map1Vert;
+    String map2Vert;
+    String map3Vert;
+    String pickColumn; // Разрежаюший столбец
+    int pickRow; // Разрещающая строка
 
 
     public static void main(String[] args) {
@@ -42,50 +49,101 @@ public class Main {
         main.initMaps(main.Map1, main.array1);
         main.initMaps(main.Map2, main.array2);
         main.initMaps(main.Map3, main.array3);
-        main.Map1.remove("x"+Integer.toString(result[0]+1));
-        main.Map2.remove("x"+Integer.toString(result[0]+1));
-        main.Map3.remove("x"+Integer.toString(result[0]+1));
-
-        switch (result[1]) { // Какое уравнение
+        main.Map1.remove("x" + Integer.toString(result[0] + 1));
+        main.Map2.remove("x" + Integer.toString(result[0] + 1));
+        main.Map3.remove("x" + Integer.toString(result[0] + 1));
+        switch (result[1]) { // Какое уравнение;
             case 1:
-                main.state.put("v1",2);
-                main.state.put("v2",3);
-                main.state.put("v1",2);
-                main.state.put("v1",2);
-
+                main.map1Vert = "x" + Integer.toString(result[0] + 1);
+                main.map2Vert = "v1";
+                main.map3Vert = "v2";
                 break;
             case 2:
-                main.Map2.put("flag",result[1]);
+                main.map1Vert = "v1";
+                main.map2Vert = "x" + Integer.toString(result[0] + 1);
+                main.map3Vert = "v2";
                 break;
             case 3:
-                main.Map3.put("flag",result[1]);
+                main.map1Vert = "v1";
+                main.map2Vert = "v2";
+                main.map3Vert = "x" + Integer.toString(result[0] + 1);
                 break;
         }
-
-        main.outArray(main.array1);
-        main.outArray(main.array2);
-        main.outArray(main.array3);
-    }
-
-    public void initMaps(Hashtable<String,Integer> map, int[]array){
-        map.put("x1",array[0]);
-        map.put("x2",array[1]);
-        map.put("x3",array[2]);
-        map.put("x4",array[3]);
-        map.put("x5",array[4]);
-        map.put("b",array[5]);
-    }
-
-    public int[] moveValueAtIndexToFront(int[] arrayToBeShifted, int index) {
-        int valueBeingMoved = arrayToBeShifted[index];
-
-        for (int i = index; i > 0; i--) {
-            arrayToBeShifted[i] = arrayToBeShifted[i - 1];
+        System.out.println(main.Map1.toString());
+        System.out.println(main.Map2.toString());
+        System.out.println(main.Map3.toString());
+        main.MapVC.put("v1", (double) 1);
+        main.MapVC.put("v2", (double) 1);
+        main.MapVC.put("x1", (double) 0);
+        main.MapVC.put("x2", (double) 0);
+        main.MapVC.put("x3", (double) 0);
+        main.MapVC.put("x4", (double) 0);
+        main.MapVC.put("x5", (double) 0);
+        main.MapVC.put("b", (double) 0);
+        main.Map1.forEach((k, v) -> {
+            main.list.add(k);
+        });
+        main.list.forEach((i) -> {
+            double test = main.MapVC.get(main.map1Vert) * main.Map1.get(i) + main.MapVC.get(main.map2Vert) * main.Map2.get(i) + main.MapVC.get(main.map3Vert) * main.Map3.get(i) - main.MapVC.get(i);
+            main.MapV.put(i, test);
+        });
+        System.out.println(main.list.toString());
+        System.out.println(main.MapV.toString());
+        main.pickColumn = main.findPickColumn(main.MapV, main.list);
+        if (main.pickColumn.equals("none")) {
+            System.out.println("Нет положительных гамм, нет решения");
+            System.exit(123);
         }
+        main.pickRow = main.findPickRow(main.pickColumn, main.Map1, main.Map2, main.Map3);
+        System.out.println(main.pickColumn);
+        System.out.println(main.pickRow);
+        double lambda = 10.0;
+        switch (main.pickRow) { // Какое уравнение;
+            case 1:
+                lambda = 1 / main.Map1.get(main.pickColumn);
+                break;
+            case 2:
+                lambda = 1 / main.Map2.get(main.pickColumn);
+                break;
+            case 3:
+                lambda = 1 / main.Map3.get(main.pickColumn);
+                break;
+        }
+        System.out.println(lambda);
+        // Делаем пересчет таблицы
+    }
 
-        arrayToBeShifted[0] = valueBeingMoved;
+    public int findPickRow(String pickColumn, Hashtable<String, Double> Map1, Hashtable<String, Double> Map2, Hashtable<String, Double> Map3) {
+        double M1 = Map1.get(pickColumn) > 0 ? Map1.get("b") / Map1.get(pickColumn) : 0;
+        double M2 = Map2.get(pickColumn) > 0 ? Map2.get("b") / Map2.get(pickColumn) : 10000;
+        double M3 = Map3.get(pickColumn) > 0 ? Map3.get("b") / Map3.get(pickColumn) : 0;
+        if (M1 < M2 && M1 < M3) {
+            return 1; // 1 строка
+        } else if (M2 < M1 && M2 < M3) {
+            return 2; // 2 строка
+        } else {
+            return 3; // 3 строка
+        }
+    }
 
-        return arrayToBeShifted;
+    public String findPickColumn(Hashtable<String, Double> MapV, ArrayList<String> list) { // Выбираем разрещающий столбец
+        for (String s : list) {
+            if (!s.equals("b")) {
+                if (MapV.get(s) > 0) {
+                    return s;
+                }
+            }
+        }
+        return "none";
+    }
+
+    public void initMaps(Hashtable<String, Double> map, int[] array) { // Выбираем разрещающую строку
+        map.put("x1", (double) array[0]);
+        map.put("x2", (double) array[1]);
+        map.put("x3", (double) array[2]);
+        map.put("x4", (double) array[3]);
+        map.put("x5", (double) array[4]);
+        map.put("b", (double) array[5]);
     }
 
     public int[] checkArrays(int[] arrayOne, int[] arrayTwo, int[] arrayThree) {
