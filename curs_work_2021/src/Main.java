@@ -110,7 +110,67 @@ public class Main {
                 break;
         }
         System.out.println(lambda);
+
+        switch (main.pickRow) { // Заполняем разрешающую строку и столбец;
+            case 1:
+                double finalLambda1 = lambda;
+                main.Map2.put(main.pickColumn + "tmp", main.Map2.get(main.pickColumn) * (-lambda));
+                main.Map3.put(main.pickColumn + "tmp", main.Map3.get(main.pickColumn) * (-lambda));
+                main.list.forEach((i) -> {
+                    if (!i.equals(main.pickColumn)) main.Map1.put(i + "tmp", main.Map1.get(i) * finalLambda1);
+                    else main.Map1.put(i + "tmp", finalLambda1);
+                });
+                break;
+            case 2:
+                double finalLambda2 = lambda;
+                main.Map1.put(main.pickColumn + "tmp", main.Map1.get(main.pickColumn) * (-lambda));
+                main.Map3.put(main.pickColumn + "tmp", main.Map3.get(main.pickColumn) * (-lambda));
+                main.list.forEach((i) -> {
+                    if (!i.equals(main.pickColumn)) main.Map2.put(i + "tmp", main.Map2.get(i) * finalLambda2);
+                    else main.Map2.put(i + "tmp", finalLambda2);
+                });
+                break;
+            case 3:
+                double finalLambda3 = lambda;
+                main.Map1.put(main.pickColumn + "tmp", main.Map1.get(main.pickColumn) * (-lambda));
+                main.Map2.put(main.pickColumn + "tmp", main.Map2.get(main.pickColumn) * (-lambda));
+                main.list.forEach((i) -> {
+                    if (!i.equals(main.pickColumn)) main.Map3.put(i + "tmp", main.Map3.get(i) * finalLambda3);
+                    else main.Map3.put(i + "tmp", finalLambda3);
+                });
+                break;
+        }
+        switch (main.pickRow) { // Заполняем остальные элементы;
+            case 1:
+                main.list.forEach((i) -> {
+                    if (!i.equals(main.pickColumn))
+                        main.Map2.put(i + "tmp", main.Map2.get(main.pickColumn + "tmp") * main.Map1.get(i));
+                    if (!i.equals(main.pickColumn))
+                        main.Map3.put(i + "tmp", main.Map3.get(main.pickColumn + "tmp") * main.Map1.get(i));
+                });
+                break;
+            case 2:
+                main.list.forEach((i) -> {
+                    if (!i.equals(main.pickColumn))
+                        main.Map1.put(i + "tmp", main.Map1.get(main.pickColumn + "tmp") * main.Map2.get(i));
+                    if (!i.equals(main.pickColumn))
+                        main.Map3.put(i + "tmp", main.Map3.get(main.pickColumn + "tmp") * main.Map2.get(i));
+                });
+                break;
+            case 3:
+                main.list.forEach((i) -> {
+                    if (!i.equals(main.pickColumn))
+                        main.Map2.put(i + "tmp", main.Map2.get(main.pickColumn + "tmp") * main.Map3.get(i));
+                    if (!i.equals(main.pickColumn))
+                        main.Map1.put(i + "tmp", main.Map1.get(main.pickColumn + "tmp") * main.Map3.get(i));
+                });
+                break;
+        }
         // Делаем пересчет таблицы
+
+        System.out.println(main.Map1.toString());
+        System.out.println(main.Map2.toString());
+        System.out.println(main.Map3.toString());
     }
 
     public int findPickRow(String pickColumn, Hashtable<String, Double> Map1, Hashtable<String, Double> Map2, Hashtable<String, Double> Map3) {
