@@ -116,6 +116,7 @@ public class Main {
                 double finalLambda1 = lambda;
                 main.Map2.put(main.pickColumn + "tmp", main.Map2.get(main.pickColumn) * (-lambda));
                 main.Map3.put(main.pickColumn + "tmp", main.Map3.get(main.pickColumn) * (-lambda));
+                main.MapV.put(main.pickColumn + "tmp", main.Map3.get(main.pickColumn) * (-lambda));
                 main.list.forEach((i) -> {
                     if (!i.equals(main.pickColumn)) main.Map1.put(i + "tmp", main.Map1.get(i) * finalLambda1);
                     else main.Map1.put(i + "tmp", finalLambda1);
@@ -125,6 +126,7 @@ public class Main {
                 double finalLambda2 = lambda;
                 main.Map1.put(main.pickColumn + "tmp", main.Map1.get(main.pickColumn) * (-lambda));
                 main.Map3.put(main.pickColumn + "tmp", main.Map3.get(main.pickColumn) * (-lambda));
+                main.MapV.put(main.pickColumn + "tmp", main.Map3.get(main.pickColumn) * (-lambda));
                 main.list.forEach((i) -> {
                     if (!i.equals(main.pickColumn)) main.Map2.put(i + "tmp", main.Map2.get(i) * finalLambda2);
                     else main.Map2.put(i + "tmp", finalLambda2);
@@ -134,6 +136,7 @@ public class Main {
                 double finalLambda3 = lambda;
                 main.Map1.put(main.pickColumn + "tmp", main.Map1.get(main.pickColumn) * (-lambda));
                 main.Map2.put(main.pickColumn + "tmp", main.Map2.get(main.pickColumn) * (-lambda));
+                main.MapV.put(main.pickColumn + "tmp", main.Map3.get(main.pickColumn) * (-lambda));
                 main.list.forEach((i) -> {
                     if (!i.equals(main.pickColumn)) main.Map3.put(i + "tmp", main.Map3.get(i) * finalLambda3);
                     else main.Map3.put(i + "tmp", finalLambda3);
@@ -143,27 +146,129 @@ public class Main {
         switch (main.pickRow) { // Заполняем остальные элементы;
             case 1:
                 main.list.forEach((i) -> {
-                    if (!i.equals(main.pickColumn))
+                    if (!i.equals(main.pickColumn)) {
                         main.Map2.put(i + "tmp", main.Map2.get(main.pickColumn + "tmp") * main.Map1.get(i));
-                    if (!i.equals(main.pickColumn))
                         main.Map3.put(i + "tmp", main.Map3.get(main.pickColumn + "tmp") * main.Map1.get(i));
+                        main.MapV.put(i + "tmp", main.MapV.get(main.pickColumn + "tmp") * main.Map1.get(i));
+                    }
                 });
                 break;
             case 2:
                 main.list.forEach((i) -> {
-                    if (!i.equals(main.pickColumn))
+                    if (!i.equals(main.pickColumn)) {
                         main.Map1.put(i + "tmp", main.Map1.get(main.pickColumn + "tmp") * main.Map2.get(i));
-                    if (!i.equals(main.pickColumn))
                         main.Map3.put(i + "tmp", main.Map3.get(main.pickColumn + "tmp") * main.Map2.get(i));
+                        main.MapV.put(i + "tmp", main.MapV.get(main.pickColumn + "tmp") * main.Map2.get(i));
+                    }
                 });
                 break;
             case 3:
                 main.list.forEach((i) -> {
-                    if (!i.equals(main.pickColumn))
+                    if (!i.equals(main.pickColumn)) {
                         main.Map2.put(i + "tmp", main.Map2.get(main.pickColumn + "tmp") * main.Map3.get(i));
-                    if (!i.equals(main.pickColumn))
                         main.Map1.put(i + "tmp", main.Map1.get(main.pickColumn + "tmp") * main.Map3.get(i));
+                        main.MapV.put(i + "tmp", main.MapV.get(main.pickColumn + "tmp") * main.Map3.get(i));
+                    }
                 });
+                break;
+        }
+        switch (main.pickRow) { // Замена;
+            case 1:
+                main.list.forEach((i) -> {
+                    if (!i.equals(main.pickColumn)) {
+                        //main.Map1.replace(i,main.Map1.get(i+"tmp")+main.Map1.get(i));
+                        main.Map1.remove(i + "tmp");
+                        main.Map2.replace(i, main.Map2.get(i + "tmp") + main.Map2.get(i));
+                        main.Map2.remove(i + "tmp");
+                        main.Map3.replace(i, main.Map3.get(i + "tmp") + main.Map3.get(i));
+                        main.Map3.remove(i + "tmp");
+                        main.MapV.replace(i, main.MapV.get(i + "tmp") + main.MapV.get(i));
+                        main.MapV.remove(i + "tmp");
+                    } else {
+                        main.Map1.replace(i, main.Map1.get(i + "tmp"));
+                        main.Map1.remove(i + "tmp");
+                        main.Map2.replace(i, main.Map2.get(i + "tmp"));
+                        main.Map2.remove(i + "tmp");
+                        main.Map3.replace(i, main.Map3.get(i + "tmp"));
+                        main.Map3.remove(i + "tmp");
+                        main.MapV.replace(i, main.Map3.get(i + "tmp"));
+                        main.MapV.remove(i + "tmp");
+                    }
+                });
+                main.Map1.put(main.map1Vert, main.Map1.get(main.pickColumn));
+                main.Map1.remove(main.pickColumn);
+                main.Map2.put(main.map1Vert, main.Map2.get(main.pickColumn));
+                main.Map2.remove(main.pickColumn);
+                main.Map3.put(main.map1Vert, main.Map3.get(main.pickColumn));
+                main.Map3.remove(main.pickColumn);
+                main.map3Vert = main.pickColumn;
+                main.pickColumn = "none";
+                main.pickRow = 0;
+                break;
+            case 2:
+                main.list.forEach((i) -> {
+                    if (!i.equals(main.pickColumn)) {
+                        main.Map1.replace(i, main.Map1.get(i + "tmp") + main.Map1.get(i));
+                        main.Map1.remove(i + "tmp");
+                        //main.Map2.replace(i,main.Map2.get(i+"tmp")+main.Map2.get(i));
+                        main.Map2.remove(i + "tmp");
+                        main.Map3.replace(i, main.Map3.get(i + "tmp") + main.Map3.get(i));
+                        main.Map3.remove(i + "tmp");
+                        main.MapV.replace(i, main.MapV.get(i + "tmp") + main.MapV.get(i));
+                        main.MapV.remove(i + "tmp");
+                    } else {
+                        main.Map1.replace(i, main.Map1.get(i + "tmp"));
+                        main.Map1.remove(i + "tmp");
+                        main.Map2.replace(i, main.Map2.get(i + "tmp"));
+                        main.Map2.remove(i + "tmp");
+                        main.Map3.replace(i, main.Map3.get(i + "tmp"));
+                        main.Map3.remove(i + "tmp");
+                        main.MapV.replace(i, main.MapV.get(i + "tmp"));
+                        main.MapV.remove(i + "tmp");
+                    }
+
+                });
+                main.Map1.put(main.map2Vert, main.Map1.get(main.pickColumn));
+                main.Map1.remove(main.pickColumn);
+                main.Map2.put(main.map2Vert, main.Map2.get(main.pickColumn));
+                main.Map2.remove(main.pickColumn);
+                main.Map3.put(main.map2Vert, main.Map3.get(main.pickColumn));
+                main.Map3.remove(main.pickColumn);
+                main.map3Vert = main.pickColumn;
+                main.pickColumn = "none";
+                main.pickRow = 0;
+                break;
+            case 3:
+                main.list.forEach((i) -> {
+                    if (!i.equals(main.pickColumn)) {
+                        main.Map1.replace(i, main.Map1.get(i + "tmp") + main.Map1.get(i));
+                        main.Map1.remove(i + "tmp");
+                        main.Map2.replace(i, main.Map2.get(i + "tmp") + main.Map2.get(i));
+                        main.Map2.remove(i + "tmp");
+                        //main.Map3.replace(i,main.Map3.get(i+"tmp")+main.Map3.get(i));
+                        main.Map3.remove(i + "tmp");
+                        main.MapV.replace(i, main.MapV.get(i + "tmp") + main.MapV.get(i));
+                        main.MapV.remove(i + "tmp");
+                    } else {
+                        main.Map1.replace(i, main.Map1.get(i + "tmp"));
+                        main.Map1.remove(i + "tmp");
+                        main.Map2.replace(i, main.Map2.get(i + "tmp"));
+                        main.Map2.remove(i + "tmp");
+                        main.Map3.replace(i, main.Map3.get(i + "tmp"));
+                        main.Map3.remove(i + "tmp");
+                        main.MapV.replace(i, main.MapV.get(i + "tmp"));
+                        main.MapV.remove(i + "tmp");
+                    }
+                });
+                main.Map1.put(main.map3Vert, main.Map1.get(main.pickColumn));
+                main.Map1.remove(main.pickColumn);
+                main.Map2.put(main.map3Vert, main.Map2.get(main.pickColumn));
+                main.Map2.remove(main.pickColumn);
+                main.Map3.put(main.map3Vert, main.Map3.get(main.pickColumn));
+                main.Map3.remove(main.pickColumn);
+                main.map3Vert = main.pickColumn;
+                main.pickColumn = "none";
+                main.pickRow = 0;
                 break;
         }
         // Делаем пересчет таблицы
@@ -171,6 +276,10 @@ public class Main {
         System.out.println(main.Map1.toString());
         System.out.println(main.Map2.toString());
         System.out.println(main.Map3.toString());
+        System.out.println(main.MapV.toString());
+        System.out.println(main.map1Vert);
+        System.out.println(main.map2Vert);
+        System.out.println(main.map3Vert);
     }
 
     public int findPickRow(String pickColumn, Hashtable<String, Double> Map1, Hashtable<String, Double> Map2, Hashtable<String, Double> Map3) {
