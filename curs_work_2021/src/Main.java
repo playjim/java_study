@@ -83,21 +83,21 @@ public class Main {
         main.Map1.forEach((k, v) -> {
             main.list.add(k);
         });
-        main.list.forEach((i) -> {
+        main.list.forEach((i) -> { // Находим гамма коэфиценты V
             double test = main.MapVC.get(main.map1Vert) * main.Map1.get(i) + main.MapVC.get(main.map2Vert) * main.Map2.get(i) + main.MapVC.get(main.map3Vert) * main.Map3.get(i) - main.MapVC.get(i);
             main.MapV.put(i, test);
         });
         System.out.println(main.list.toString());
         System.out.println(main.MapV.toString());
-        main.pickColumn = main.findPickColumn(main.MapV, main.list);
+        main.pickColumn = main.findPickColumn(main.MapV, main.list); // выбираем положительную не базисную гамму
         if (main.pickColumn.equals("none")) {
             System.out.println("Нет положительных гамм, нет решения");
-            System.exit(123);
+            System.exit(95);
         }
-        main.pickRow = main.findPickRow(main.pickColumn, main.Map1, main.Map2, main.Map3);
+        main.pickRow = main.findPickRow(main.pickColumn, main.Map1, main.Map2, main.Map3); // находим разрещающую строку
         System.out.println(main.pickColumn);
         System.out.println(main.pickRow);
-        double lambda = 10.0;
+        double lambda = 0.0;
         switch (main.pickRow) { // Какое уравнение;
             case 1:
                 lambda = 1 / main.Map1.get(main.pickColumn);
@@ -293,6 +293,10 @@ public class Main {
         } else {
             return 3; // 3 строка
         }
+    }
+
+    public void calculateV() {
+
     }
 
     public String findPickColumn(Hashtable<String, Double> MapV, ArrayList<String> list) { // Выбираем разрещающий столбец
